@@ -1,0 +1,28 @@
+$cellSize: 60px
+
+.grid-container
+
+
+.grid
+    display: inline-block
+
+.grid__row
+    border-bottom: 1px solid #aaaaaa
+    overflow: hidden
+
+    &:last-child
+        border-bottom: none
+
+.grid__row__cell
+    width: $cellSize
+    height: $cellSize
+    line-height: $cellSize
+    text-align: center
+    float: left
+    border-right: 1px solid #aaaaaa
+
+    &:last-child
+        border-right: none
+
+    &:hover
+        background-color: #eeeeee

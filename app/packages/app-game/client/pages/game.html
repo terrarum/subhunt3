@@ -1,0 +1,53 @@
+<template name="game">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {{#unless status.waiting}}
+                    {{player1}} vs {{player2}}
+                {{/unless}}
+
+                <br/>
+                {{#if status.playing}}
+                    It is {{currentPlayerString}} go.
+                {{/if}}
+                {{#if status.tie}}
+                    It's a tie!
+                    <br/>
+                    <button class="btn btn-default js-delete" type="submit">Return to Lobby</button>
+                {{/if}}
+                {{#if status.won}}
+                    {{currentPlayer}} has won the game!
+                    <br/>
+                    <button class="btn btn-default js-delete" type="submit">Return to Lobby</button>
+                {{/if}}
+            </div>
+            <div class="col-sm-12">
+                {{#if status.waiting}}
+                    Waiting for opponent to join!
+                {{else}}
+                    {{> renderGrid}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="renderGrid">
+    <div class="grid-container">
+        <div class="grid">
+            {{#each grid}}
+                <div class="grid__row">
+                    {{#each this}}
+                        {{> gridCell}}
+                    {{/each}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="gridCell">
+    <div class="grid__row__cell js-grid-cell">
+        {{value}}
+    </div>
+</template>

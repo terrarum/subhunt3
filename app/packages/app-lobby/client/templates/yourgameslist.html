@@ -1,0 +1,14 @@
+<template name="yourGamesList">
+
+    <table class="table">
+        <tr>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th></th>
+        </tr>
+        {{#each gamesList}}
+            {{> gameItem}}
+        {{/each}}
+    </table>
+
+</template>

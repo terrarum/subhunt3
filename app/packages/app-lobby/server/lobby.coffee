@@ -29,8 +29,6 @@ Meteor.methods
         if !Meteor.userId()
             throw new Meteor.Error("not-authorized")
 
-        gridSize = 3
-
         Games.insert
             createdAt: new Date()
             ownerId: Meteor.userId()

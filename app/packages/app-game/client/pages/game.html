@@ -2,11 +2,8 @@
     <div class="container">
         <div class="row">
 
-            Phaser!
-            <br>
-            <div id="game"></div>
-
             <div class="col-sm-12">
+
                 {{#unless status.waiting}}
                     {{player1}} vs {{player2}}
                 {{/unless}}
@@ -30,29 +27,10 @@
                 {{#if status.waiting}}
                     Waiting for opponent to join!
                 {{else}}
-                    {{> renderGrid}}
+                    <div id="game"></div>
+                    {{phaser}}
                 {{/if}}
             </div>
         </div>
-    </div>
-</template>
-
-<template name="renderGrid">
-    <div class="grid-container">
-        <div class="grid">
-            {{#each grid}}
-                <div class="grid__row">
-                    {{#each this}}
-                        {{> gridCell}}
-                    {{/each}}
-                </div>
-            {{/each}}
-        </div>
-    </div>
-</template>
-
-<template name="gridCell">
-    <div class="grid__row__cell js-grid-cell">
-        {{value}}
     </div>
 </template>

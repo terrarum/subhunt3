@@ -22,4 +22,4 @@ Template.game.events
         Meteor.call "deleteGame", game._id
         Router.go "/"
     'click #game': (ev) ->
-        console.log ev
+        console.log ev.offsetX, ev.offsetY

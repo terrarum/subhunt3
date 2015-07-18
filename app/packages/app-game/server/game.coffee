@@ -8,7 +8,7 @@ Meteor.methods
         game = getGame(gameId)
         return if game.currentPlayer isnt Meteor.user().username
         console.log game.currentPlayer + " is the current player."
-        
+
 
     ping: (gameId) ->
         console.log "Player Ping"

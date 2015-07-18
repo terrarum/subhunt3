@@ -2,15 +2,21 @@ Meteor.subscribe 'games'
 
 Template.game.helpers
     currentPlayerString: ->
+        if Meteor.user().username is @.player1
+            currentPos = @.player1Sub
+        if Meteor.user().username is @.player2
+            currentPos = @.player2Sub
+
+        Session.set "currentPlayerPos", currentPos
+
         if Meteor.user().username is @.currentPlayer
             return "your"
         else
             return @.currentPlayer + "'s"
     phaser: ->
-        console.log "phaser render"
-        setTimeout(->
-            window.phaserGame = new Phaser.Game(800, 600, Phaser.AUTO, 'game')
-        , 500)
+        console.log "phaser"
+        $(document).trigger("renderPhaser")
+
         return ""
 
 

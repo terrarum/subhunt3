@@ -55,8 +55,6 @@ Template.gameItem.helpers
     memberOf: ->
         username = Meteor.user().username
         if @.player1 is username or @.player2 is username
-            console.log "member of"
             return true
         else
-            console.log "not member of"
             return false

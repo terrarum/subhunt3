@@ -3,26 +3,6 @@
 Meteor.publish "games", ->
     Games.find()
 
-gridModel = (x, y) ->
-    #Meteor.log.info "gridModel"
-    return {
-        id: uuid.v4()
-        x: x
-        y: y
-        value: ''
-        owner: ''
-    }
-
-# Creates a two-dimensional array of the given size.
-grid = (count) ->
-    gridArr = []
-    for i in [0...count] by 1
-        row = []
-        for j in [0...count] by 1
-            row.push gridModel j, i
-        gridArr.push row
-    return gridArr
-
 Meteor.methods
     # Add a game to the lobby.
     addGame: ->
@@ -35,8 +15,6 @@ Meteor.methods
             player1: Meteor.user().username
             player2: null
             currentPlayer: Meteor.user().username
-            grid: grid(gridSize)
-            cellCount: gridSize * gridSize
             status:
                 tie: false
                 waiting: true

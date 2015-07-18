@@ -1,8 +1,4 @@
-#Meteor.log.info "game"
-
 Meteor.subscribe 'games'
-
-game = null
 
 Template.game.helpers
     currentPlayerString: ->
@@ -11,6 +7,7 @@ Template.game.helpers
         else
             return @.currentPlayer + "'s"
     phaser: ->
+        console.log "phaser render"
         setTimeout(->
             window.phaserGame = new Phaser.Game(800, 600, Phaser.AUTO, 'game')
         , 500)
@@ -22,8 +19,8 @@ Template.game.events
         Meteor.call "deleteGame", game._id
         Router.go "/"
     'click #game': (ev) ->
-        Meteor.call "move", ev.offsetX, ev.offsetY
+        Meteor.call "move", @._id, ev.offsetX, ev.offsetY
     'click .fire': ->
-        Meteor.call "fire"
+        Meteor.call "fire", @._id
     'click .ping': ->
-        Meteor.call "ping"
+        Meteor.call "ping", @._id

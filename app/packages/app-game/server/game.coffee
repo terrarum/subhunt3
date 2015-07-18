@@ -5,12 +5,24 @@ getCellById = (cellId, grid) ->
             if grid[i][j].id is cellId
                 return grid[i][j]
 
+getGame = (gameId) ->
+    return Games.findOne
+        _id: gameId
+
 Meteor.methods
-    move: (x, y) ->
+    move: (gameId, x, y) ->
         console.log "Player Move To ", x, y
+        game = getGame(gameId)
+        console.log game.currentPlayer
+        return if game.currentPlayer isnt Meteor.user().username
+        console.log game.currentPlayer + " is the current player."
 
-    ping: ->
+    ping: (gameId) ->
         console.log "Player Ping"
+        game = getGame(gameId)
+        return if game.currentPlayer isnt Meteor.user().username
 
-    fire: ->
+    fire: (gameId) ->
         console.log "Player Fire"
+        game = getGame(gameId)
+        return if game.currentPlayer isnt Meteor.user().username

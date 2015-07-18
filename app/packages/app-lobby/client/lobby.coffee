@@ -48,8 +48,7 @@ Template.yourGamesList.helpers
             ]
 
 Template.gameItem.helpers
-    # Returns whether or not the current user is the
-    # owner of the game.
+    # Returns whether or not the current user is the owner of the game.
     owner: ->
         return Meteor.userId() == @.ownerId
     memberOf: ->

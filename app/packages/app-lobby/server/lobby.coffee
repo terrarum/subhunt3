@@ -13,7 +13,15 @@ Meteor.methods
             createdAt: new Date()
             ownerId: Meteor.userId()
             player1: Meteor.user().username
+            player1Sub:
+                x: 100
+                y: 100
+                angle: 0
             player2: null
+            player2Sub:
+                x: 400
+                y: 400
+                angle: 0
             currentPlayer: Meteor.user().username
             status:
                 tie: false
